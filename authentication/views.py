@@ -1,3 +1,23 @@
 from django.shortcuts import render
+from django.contrib.auth import login, authenticate
+from . import forms
 
-# Create your views here.
+def login_page(request):
+    form = forms.LoginForm()
+    message = "Connexion / Inscription"
+    if request.method == "POST":
+        form = forms.LoginForm(request.POST)
+        if form.is_valid:
+            user = authenticate(
+                username=form.data["username"],
+                password=form.data["password"]
+            )
+            if user:
+                login(request, user)
+                message = f"Bonjour {username}, vous êtes bien connecté.e !"
+            else:
+                message = "Identifiants invalides !"
+    return render(
+        request, "authentication/login.html",
+        context={"form": form, "message": message}
+        )
