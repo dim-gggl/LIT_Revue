@@ -14,7 +14,7 @@ def login_page(request):
             )
             if user:
                 login(request, user)
-                message = f"Bonjour {username}, vous êtes bien connecté.e !"
+                message = f"Bonjour {user.username}, vous êtes bien connecté.e !"
             else:
                 message = "Identifiants invalides !"
     return render(
