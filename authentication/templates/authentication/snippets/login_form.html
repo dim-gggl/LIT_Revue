@@ -1,0 +1,6 @@
+{{ form.as_p }}
+{% csrf_token %}
+<button type="submit" class="login-submit-btn">{{ button_text|default:"Soumettre" }}</button>
+{% if message %}
+    <p class="login-form-message">{{ message }}</p>
+{% endif %}

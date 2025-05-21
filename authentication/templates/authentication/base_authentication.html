@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %} LIT Revue | Authentification {% endblock title %}
+{% block content %}
+<div class="login-form-container">
+  <h2 class="login-form-title">{% block form_title %}Connexion/Inscription{% endblock %}</h2>
+    <form method="post" class="login-form">
+      {% block form %}{% endblock %}
+    </form>
+    <p class="sign-up-invitation">Pas encore inscrits ? <a href="{% url 'signup' %}">S'inscrire</a></p>
+</div>
+{% endblock content %}
