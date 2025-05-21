@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% block title %} LIT Revue | Authentification {% endblock title %}
 {% block content %}
+<main>
     <div class="login-form-container">
-        <p>{{ message }}</p>
-        <form method="post">
+        {% if message %}
+            <p class="login-form-message">{{ message }}</p>
+        {% endif %}
+        <form method="post" class="login-form">
             {{ form.as_p }}
             {% csrf_token %}
-            <button type="submit" >Se connecter</button>
+            <button type="submit" class="login-submit-btn">Connexion</button>
         </form>
     </div>
+</main>
 {% endblock content %}
+
+

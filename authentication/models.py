@@ -11,6 +11,7 @@ class User(AbstractUser):
         symmetrical=False,
         related_name="followers"
     )
+
     def __str__(self):
         return self.username
 
@@ -59,5 +60,3 @@ class UserFollows(models.Model):
         # ensures we don't get multiple UserFollows instances
         # for unique user-user_followed pairs
         unique_together = ('user', 'followed_user', )
-
-

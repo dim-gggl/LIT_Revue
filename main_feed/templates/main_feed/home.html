@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Accueil{% endblock title %}
 {% block content %}
-    <p>Vous êtes bien connecté !</p>
+<div class="login-form-container">
+    <form class="login-form" action="{% url 'logout' %}" method="get">
+        {% csrf_token %}
+        <p class="login-form-message">Vous êtes connecté en tant que {{ request.user }}.</p>
+        <button type="submit" class="login-submit-btn">Se déconnecter</button>
+    </form>
+</div>
 {% endblock content %}
