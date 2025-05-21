@@ -55,9 +55,38 @@ main {
 }
 
 .login-form-container {
+    display: flex;
+    justify-content: space-evenly;
     margin: 0 2ch;
-    justify-items: center;
+    /* justify-items: center; */
     padding: 2ch;
+}
+
+.sign-up-invitation {
+    min-width: 40%;
+    text-align: center;
+    /* align-items: center; */
+    align-content: space-evenly;
+}
+
+h2.login-form-title {
+    text-align: center;
+    font-size: larger;
+}
+
+h2.sign-up-invitation-title {
+    font-size: larger;
+    margin-bottom: 4ch;
+}
+
+.sign-up-invitation a {
+    text-decoration: none;
+    padding: 0.4ch 6ch;
+    max-width: 206px;
+    margin: 2ch auto;
+    border-radius: 50px;
+    border: 1px solid #0000003b;
+    box-shadow: -1px 2px 2px #00000075;
 }
 
 p.login-form-message {
@@ -76,7 +105,7 @@ p.login-form-message {
     flex-direction: column;
     align-content: space-evenly;
     height: 100%;
-    min-width: 80%;
+    min-width: 60%;
 }
 
 .password-field {
@@ -106,6 +135,7 @@ p.login-form-message {
 }
 
 button.login-submit-btn {
+    font-family: "Domine";
     padding: 0.4ch 6ch;
     max-width: 206px;
     margin: 3ch auto;
@@ -115,39 +145,43 @@ button.login-submit-btn {
 }
 
 .login-form ul {
+    /* opacity: 0.6; */
     margin-inline: auto;
-    margin-top: 3ch;
+    margin-top: 1ch;
     list-style: none;
     font-family: sans-serif;
-    max-width: 58%;
-    font-size: 0.5rem;
-    background-color: #f5f5f5d6;
-    border-radius: 10px;
-    padding: 4ch;
-    box-shadow: -3px 4px 3px #88888885, inset 2px -2px 4px #0000005c;
+    max-width: 55%;
+    font-size: 0.4rem;
+    background-color: #fffdfb;
+    /* border-radius: 10px; */
+    /* border-left: 3px solid #0185d669; */
+    padding: 1ch;
+    color: #abaaa8;
+    /* box-shadow: -3px 4px 3px #88888885, inset 2px -2px 4px #0000005c; */
 }
 
 .login-form ul li {
-    font-size: 0.8rem;
+    font-size: 0.65rem;
     text-align: center;
-    color: #424141e3;
+    color: #abaaa8;
     background: transparent;
 }
 
 .login-form p > span {
     margin-inline: auto;
-    margin-top: 3ch;
+    margin-top: 0ch;
     list-style: none;
     font-family: sans-serif;
-    max-width: 58%;
+    max-width: 52%;
     font-size: 0.5rem;
-    background-color: #f5f5f5d6;
-    border-radius: 10px;
+    background-color: #fffdfb;
+    /* border-radius: 10px; */
+    /* border-left: 3px solid #cae0f2; */
     padding: 1.3ch 4ch;
-    box-shadow: -2px 3px 6px #494949a6, inset 1px -1px 3px #0000005c;
+    /* box-shadow: -2px 3px 6px #494949a6, inset 1px -1px 3px #0000005c; */
     font-size: 0.7rem;
     text-align: center;
-    color: #424141e3;
+    color: #9a9997d4;
 }
 
 span#id_password1_helptext {

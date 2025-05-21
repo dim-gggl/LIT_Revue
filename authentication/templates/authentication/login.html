@@ -1,5 +1,11 @@
 {% extends 'authentication/base_authentication.html' %}
 {% block form_title %}Connexion{% endblock %}
+{% block sign_up_invitation %}
+  <div class="sign-up-invitation">
+    <h2 class="sign-up-invitation-title">Inscrivez-vous dès maintenant</h2>
+    <a href="{% url 'signup' %}">S'inscrire</a></p>
+  </div>
+{% endblock %}
 {% block form %}
   {% include "authentication/snippets/login_form.html" %}
 {% endblock %}
