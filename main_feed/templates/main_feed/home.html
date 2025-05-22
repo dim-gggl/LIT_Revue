@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% block title %}Accueil{% endblock title %}
+{% block navbar %}
+  {% include "partials/nav-bar.html" %}
+{% endblock %}
 {% block content %}
-<div class="login-form-container">
-    <form class="login-form" action="{% url 'logout' %}" method="get">
-        {% csrf_token %}
-        <p class="login-form-message">Vous êtes connecté en tant que {{ request.user }}.</p>
-        <button type="submit" class="login-submit-btn">Se déconnecter</button>
-    </form>
-</div>
+<p class="login-form-message">Vous êtes connecté en tant que {{ request.user }}.</p>
+<section class="feed_main-container">
+  <div class="feed_btns-container">
+    <a href="{% url 'create_review' %}" class="feed_ticket-btn">Demander une critique</a>
+    <a href="{% url 'create_ticket' %}" class="feed_review-btn">Publier une critique</a>
+  </div>
+</section>
 {% endblock content %}

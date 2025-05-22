@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_style %}
+  <link rel="stylesheet" href="{% static 'review_form_style.css' %}">
+{% endblock %}
+{% block title%}lit review | Poster une critique{% endblock %}
+{% block navbar %}
+  {% include "partials/nav-bar.html" %}
+{% endblock %}
+{% block content %}
+  {% if ticket %}
+    <h2>Créer une critique</h2>
+    <p>{{ ticket.description }}</p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Envoyer</button>
+    </form>
+
+  {% else %}
+    <h2>Créer une critique</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset>
+        <legend>Livre / Article</legend>
+        {{ ticket_form.as_p }}
+      </fieldset>
+      <fieldset>
+        <legend>Critique</legend>
+        {{ review_form.as_p }}
+      </fieldset>
+      <button type="submit">Envoyer</button>
+    </form>
+  {% endif %}
+{% endblock %}

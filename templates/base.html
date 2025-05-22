@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang='en'>
+<html lang='fr-FR'>
   <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width initial-scale=1'>
@@ -9,14 +9,16 @@
       @import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=EB+Garamond:ital,wght@0,599;1,599&display=swap');
     </style>
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block extra_style %}{% endblock %}
     <title>{% block title %}{% endblock title %}</title>
   </head>
-    <body>
-      <header class="banner">
-        <h1>Lit Review</h1>
-      </header>
-      <main>
-        {% block content %}{% endblock content %}
-      </main>
-    </body>
+  <body>
+    <header class="banner">
+      <h1 class="banner-title">Lit Review</h1>
+      <nav class="navbar">{% block navbar %}{% endblock %}</nav>
+    </header>
+    <main>
+      {% block content %}{% endblock content %}
+    </main>
+  </body>
 </html>

@@ -1,5 +1,7 @@
 {% extends 'authentication/base_authentication.html' %}
 {% block form_title %}Inscription{% endblock %}
 {% block form %}
-  {% include "authentication/snippets/login_form.html" %}
+  {% with button_text="S'inscrire" %}
+    {% include "authentication/snippets/login_form.html" %}
+  {% endwith %}
 {% endblock %}
