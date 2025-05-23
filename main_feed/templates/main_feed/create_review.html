@@ -9,7 +9,7 @@
 {% endblock %}
 {% block content %}
   {% if ticket %}
-    <h2>Créer une critique</h2>
+    <h2 class="create-review-title">Créer une critique</h2>
     <p>{{ ticket.description }}</p>
     <form method="post">
       {% csrf_token %}
@@ -18,7 +18,7 @@
     </form>
 
   {% else %}
-    <h2>Créer une critique</h2>
+    <h2 class="create-review-title">Créer une critique</h2>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <fieldset>

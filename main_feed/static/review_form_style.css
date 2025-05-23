@@ -1,4 +1,4 @@
-
+/*
 form {
   display: flex;
   flex-direction: column;
@@ -19,6 +19,7 @@ fieldset > p {
   max-width: 80vw;
   margin: 1vh auto;
 }
+
 fieldset textarea {
   min-width: 20vw;
   max-width: 25vw;
@@ -37,7 +38,7 @@ fieldset > div {
 
 div#id_rating > div {
   margin: 1vh .5vw;
-  /*! padding: 2vw 2vh; */
+  /*! padding: 2vw 2vh; *//*
   min-width: 2vw;
   justify-items: baseline;
-}
+} */
