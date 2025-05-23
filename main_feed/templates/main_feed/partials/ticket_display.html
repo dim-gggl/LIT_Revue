@@ -1,0 +1,13 @@
+<div class="ticket-display">
+    <div class="ticket-metadata">
+        <p class="ticket-time-created">posté le {{ ticket.time_created }}</p>
+        <p class="ticket-user">par {{ ticket.user }}</p>
+    </div>
+    <h1 class="ticket-title">{{ ticket.title }}</h1>
+    <div class="ticket-body">
+        <p class="ticket-body_description">{{ ticket.description }}</p>
+        {% if ticket.image %}
+            <img src="">
+        {% endif %}
+    </div>
+</div>

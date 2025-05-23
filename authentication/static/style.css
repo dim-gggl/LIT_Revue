@@ -3,7 +3,6 @@
     padding: 0;
     font-size: 16px;
     color: #111111;
-    background-color: #fffdfbd4;
 }
 
 html {
@@ -12,7 +11,7 @@ html {
     margin: 0;
     font-family: "Domine", "EB Garamond", Baskervville, serif;
     font-weight: 600;
-    background-color: #fcfaf9d4;
+    background-color: #fff8f5f3;
 }
 
 body {
@@ -73,7 +72,7 @@ a { text-decoration: none; }
 }
 
 .navbar > a {
-    background: transparent;
+	background: transparent;
 	text-decoration: none;
 	font-family: "Domine";
 	padding: .4rem 1.5rem;
@@ -84,7 +83,8 @@ a { text-decoration: none; }
 	justify-content: center;
 	font-weight: 800;
 	font-variant: all-petite-caps;
-	color: #e8d9c2;
+	color: #e8d9c2b0;
+	text-shadow: 0.8px -0.8px 2px #060000, -0.5px 0.5px 0.6px #fdfcfc;
 }
 
 main {
@@ -270,4 +270,43 @@ flex-direction: column;
   box-shadow: -1px 2px 2px #00000075;
   background-color: #ffffff26;
 }
+p.login-form-message {
+	border: 0.5px solid #00000045;
+	width: 20%;
+	text-align: center;
+	padding: 1ch;
+	background: floralwhite;
+	/* font-size: 1rem; */
+	border-radius: 20px;
+	margin-bottom: 3ch;
+	margin: 1.5vh auto;
+    font-size: 1rem;
+}
 
+.feed_btns-container {
+	max-width: 64vw;
+	margin: 2vh auto;
+	display: flex;
+	justify-content: space-between;
+    background: transparent;
+}
+
+a.feed_ticket-btn {
+	text-decoration: none;
+	padding: 0.4ch 6ch;
+	max-width: 206px;
+	margin: 2ch auto;
+	border-radius: 50px;
+	border: 1px solid #0000003b;
+	box-shadow: -1px 2px 2px #00000075;
+}
+
+a.feed_review-btn {
+	text-decoration: none;
+	padding: 0.4ch 6ch;
+	max-width: 206px;
+	margin: 2ch auto;
+	border-radius: 50px;
+	border: 1px solid #0000003b;
+	box-shadow: -1px 2px 2px #00000075;
+}

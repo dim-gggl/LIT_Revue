@@ -1,0 +1,11 @@
+<div class="review-main-container">
+    <div class="review-metadata">
+        <p class="review-time-created">postée le {{ review.time_created }}</p>
+        <p class="review-author">par {{ review.user }}</p>
+    </div>
+    <h1 class="review-headline">{{ review.headline }} - {{ review.rating }}</h1>
+    <p>{{ review.body }}</p>
+    {% with ticket=review.ticket %}
+        {% include "partials/ticket_display.html" %}
+    {% endwith %}
+</div>

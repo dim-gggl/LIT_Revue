@@ -1,10 +1,10 @@
 from itertools import chain
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 from django.db.models import CharField, Value
 from authentication.models import User
-from . import forms
+from .forms import TicketForm, ReviewForm
 
 
 @login_required
@@ -13,19 +13,16 @@ def home(request):
 
 @login_required
 def create_ticket(request):
-    form = forms.TicketForm
-
-    if request.method == "POST":
-        form = forms.TicketForm(
-            request.POST,
-            request.FILES
+    form = TicketForm(
+            request.POST or None,
+            request.FILES or None
             )
 
-        if form.is_valid():
-            ticket = form.save(commit=False)
-            ticket.user = request.user
-            ticket.save()
-            return redirect("home")
+    if form.is_valid():
+        ticket = form.save(commit=False)
+        ticket.user = request.user
+        ticket.save()
+        return redirect("homepage")
 
     return render(
         request,
@@ -48,7 +45,7 @@ def create_review(request, ticket_id=None):
             review.user = request.user
             review.ticket = ticket
             review.save()
-            return redirect("home")
+            return redirect("homepage")
 
         return render(request,
         "main_feed/create_review.html", context={
@@ -56,11 +53,11 @@ def create_review(request, ticket_id=None):
             "ticket": ticket,
         })
 
-    ticket_form = forms.TicketForm(
+    ticket_form = TicketForm(
         request.POST or None,
         request.FILES or None
         )
-    review_form = forms.ReviewForm(
+    review_form = ReviewForm(
         request.POST or None
         )
 
@@ -73,7 +70,7 @@ def create_review(request, ticket_id=None):
         review.user = request.user
         review.ticket = ticket
         review.save()
-        return redirect("home")
+        return redirect("homepage")
 
     return render(
         request,

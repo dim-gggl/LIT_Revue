@@ -7,8 +7,23 @@
 <p class="login-form-message">Vous êtes connecté en tant que {{ request.user }}.</p>
 <section class="feed_main-container">
   <div class="feed_btns-container">
-    <a href="{% url 'create_review' %}" class="feed_ticket-btn">Demander une critique</a>
-    <a href="{% url 'create_ticket' %}" class="feed_review-btn">Publier une critique</a>
+    <a href="{% url 'create_ticket' %}" class="feed_ticket-btn">Demander une critique</a>
+    <a href="{% url 'create_review' %}" class="feed_review-btn">Publier une critique</a>
   </div>
+  {% if posts %}
+    <div class="feed">
+    {% for post in posts %}
+      {% if post.content_type == "TICKET" %}
+        {% with ticket=post %}
+          {% include "partials/ticket_display.html" %}
+        {% endwith %}
+      {% elif post.content_type == "REVIEW" %}
+        {% with review=post %}
+          {% include "partials/review_display.html" %}
+        {% endwith %}
+      {% endif %}
+    {% endfor %}
+    </div>
+  {% endif %}
 </section>
 {% endblock content %}
