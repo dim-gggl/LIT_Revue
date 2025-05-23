@@ -1,9 +1,12 @@
 from itertools import chain
-from django.shortcuts import render, redirect
+from django.shortcuts import HttpResponseRedirect, render, redirect
 from django.contrib.auth.decorators import login_required
-from django.views.generic import View
+from django.views.generic import View, ListView, CreateView
 from django.db.models import CharField, Value
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from authentication.models import User
+from .models import Ticket
 from .forms import TicketForm, ReviewForm
 from .utils import get_users_viewable_reviews, get_users_viewable_tickets
 
@@ -28,6 +31,26 @@ def home(request):
         context={"posts": posts}
         )
 
+class HomeView(LoginRequiredMixin, ListView):
+    template_name = "main_feed/home.html"
+    context_object_name = "posts"
+
+    def get_queryset(self):
+            reviews = get_users_viewable_reviews(self.request.user)
+            # returns queryset of reviews
+            reviews = reviews.annotate(content_type=Value("REVIEW", CharField()))
+            tickets = get_users_viewable_tickets(self.request.user)
+            # returns queryset of tickets
+            tickets = tickets.annotate(content_type=Value("TICKET", CharField()))
+            # combine and sort the two types of posts
+            posts = sorted(
+                chain(reviews, tickets),
+                key=lambda post: post.time_created,
+                reverse=True
+            )
+            return posts
+    
+
 @login_required
 def create_ticket(request):
     form = TicketForm(
@@ -47,6 +70,16 @@ def create_ticket(request):
         context={"form": form}
         )
 
+class TicketCreateView(LoginRequiredMixin, CreateView):
+    model = Ticket
+    fields = ('title', 'description', 'image')
+    template_name = 'main_feed/create_ticket.html'
+    success_url = reverse_lazy('homepage')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 @login_required
 def create_review(request, ticket_id=None):

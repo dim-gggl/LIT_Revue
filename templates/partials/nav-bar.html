@@ -1,4 +1,4 @@
 <a href="{% url 'homepage' %}" class="nav-bar_feed-btn">Feed</a>
 <a href="" class="nav-bar_follows-btn">Abonnements</a>
 <a href="" class="nav-bar_posts-btn">Posts</a>
-<a href="{% url 'logout' %}" class="nav-bar_logout-btn">Se déconnecter</a>
+<form method="POST" action="{% url 'logout' %}">{% csrf_token %}<button class="nav-bar_logout-btn">Se déconnecter</a></form>

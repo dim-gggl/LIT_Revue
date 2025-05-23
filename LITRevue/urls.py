@@ -18,18 +18,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import LoginView
-from django.urls import path
+from django.urls import path, include
 import authentication.views
 import main_feed.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", authentication.views.LogginPage.as_view(), name="login"),
-    path("logout/", authentication.views.LoggingOutView.as_view(), name="logout"),
-    path("home/", main_feed.views.home, name="homepage"),
-    path("signup/", authentication.views.SignUpPage.as_view(), name="signup"),
-    path("ticket/new/", main_feed.views.create_ticket, name="create_ticket"),
-    path("review/new/", main_feed.views.create_review, name="create_review")
+    path('', include('authentication.urls')),
+    path('', include('main_feed.urls'))
 ]
 
 if settings.DEBUG:
