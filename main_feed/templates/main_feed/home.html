@@ -15,11 +15,11 @@
     {% for post in posts %}
       {% if post.content_type == "TICKET" %}
         {% with ticket=post %}
-          {% include "partials/ticket_display.html" %}
+          {% include "main_feed/partials/ticket_display.html" %}
         {% endwith %}
       {% elif post.content_type == "REVIEW" %}
         {% with review=post %}
-          {% include "partials/review_display.html" %}
+          {% include "main_feed/partials/review_display.html" %}
         {% endwith %}
       {% endif %}
     {% endfor %}

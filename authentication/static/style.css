@@ -371,3 +371,16 @@ fieldset p > label {
 fieldset p > input, fieldset p > textarea {
 	min-width: 30vw;
 }
+
+#id_rating {
+  display: flex;
+  justify-content: center;
+  padding: 2vh;
+}
+
+div#id_rating > div {
+  margin: 1vh .5vw;
+  /*! padding: 2vw 2vh; */
+  min-width: 2vw;
+  justify-items: baseline;
+}

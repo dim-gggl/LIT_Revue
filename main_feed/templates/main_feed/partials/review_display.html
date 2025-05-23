@@ -6,6 +6,6 @@
     <h1 class="review-headline">{{ review.headline }} - {{ review.rating }}</h1>
     <p>{{ review.body }}</p>
     {% with ticket=review.ticket %}
-        {% include "partials/ticket_display.html" %}
+        {% include "main_feed/partials/ticket_display.html" %}
     {% endwith %}
 </div>

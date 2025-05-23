@@ -5,11 +5,28 @@ from django.views.generic import View
 from django.db.models import CharField, Value
 from authentication.models import User
 from .forms import TicketForm, ReviewForm
+from .utils import get_users_viewable_reviews, get_users_viewable_tickets
 
 
 @login_required
 def home(request):
-    return render(request, "main_feed/home.html")
+    reviews = get_users_viewable_reviews(request.user)
+    # returns queryset of reviews
+    reviews = reviews.annotate(content_type=Value("REVIEW", CharField()))
+    tickets = get_users_viewable_tickets(request.user)
+    # returns queryset of tickets
+    tickets = tickets.annotate(content_type=Value("TICKET", CharField()))
+    # combine and sort the two types of posts
+    posts = sorted(
+        chain(reviews, tickets),
+        key=lambda post: post.time_created,
+        reverse=True
+    )
+    return render(
+        request,
+        "main_feed/home.html",
+        context={"posts": posts}
+        )
 
 @login_required
 def create_ticket(request):
