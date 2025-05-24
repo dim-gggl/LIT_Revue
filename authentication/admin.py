@@ -4,5 +4,3 @@ from .models import User, UserFollows
 admin.site.register(User)
 admin.site.register(UserFollows)
 
-
-# Register your models here.

@@ -82,7 +82,7 @@ button {
 	justify-content: space-evenly;
 }
 
-.navbar > a {
+.navbar > a, .nav-bar_logout-btn {
 	background: transparent;
 	text-decoration: none;
 	font-family: "Domine";
@@ -96,6 +96,11 @@ button {
 	font-variant: all-petite-caps;
 	color: #e8d9c2b0;
 	text-shadow: 0.8px -0.8px 2px #060000, -0.5px 0.5px 0.6px #fdfcfc;
+}
+
+.nav-bar_logout-btn {
+	border: none;
+	box-shadow: unset;
 }
 
 main {
@@ -341,7 +346,7 @@ fieldset {
 	max-width: 80vw;
 }
 
-fieldset > p {
+fieldset > p, form > p {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -383,4 +388,76 @@ div#id_rating > div {
   /*! padding: 2vw 2vh; */
   min-width: 2vw;
   justify-items: baseline;
+}
+
+.ticket-metadata {
+  display: flex;
+  max-width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  line-height: 2;
+  padding: 0 1vw;
+  background-color: floralwhite;
+}
+
+.ticket-title {
+  text-align: center;
+}
+
+.ticket-display {
+  max-width: 50vw;
+  margin: 1vh auto;
+  border: 1px solid;
+  min-height: 20vh;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ticket-body {
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	padding: 4vh 4vw;
+}
+
+.review-main-container {
+  max-width: 50vw;
+  margin: 1vh auto;
+  border: 1px solid;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 0 1vw 1vh 1vw;
+}
+.review-metadata {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  min-width: 100%;
+  background-color: floralwhite;
+  min-height: 100%;
+  margin: 0 -1vw;
+  padding: 1vh 1vw;
+}
+.review-headline {
+  text-align: center;
+}
+.review-rating {
+  text-align: center;
+}
+.ticket-body_description {
+  text-align: center;
+}
+.review-body {
+  text-align: justify;
+  padding: 3vh 2vw;
+}
+
+.ticket-body > a {
+  text-decoration: none;
+  padding: 0.4ch 6ch;
+  max-width: 206px;
+  margin: 2ch auto;
+  border-radius: 50px;
+  border: 1px solid #0000003b;
+  box-shadow: -1px 2px 2px #00000075;
 }

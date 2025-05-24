@@ -9,13 +9,19 @@
 {% endblock %}
 {% block content %}
   {% if ticket %}
+  <section class="main-review-creation-container">
     <h2 class="create-review-title">Créer une critique</h2>
-    <p>{{ ticket.description }}</p>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Envoyer</button>
-    </form>
+    {% with ticket=ticket review_creation_context=True %}
+      {% include "main_feed/partials/ticket_display.html" %}
+    {% endwith %}
+    <div class="review-creation-container">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
 
   {% else %}
     <h2 class="create-review-title">Créer une critique</h2>

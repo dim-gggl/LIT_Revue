@@ -3,9 +3,10 @@
         <p class="review-time-created">postée le {{ review.time_created }}</p>
         <p class="review-author">par {{ review.user }}</p>
     </div>
-    <h1 class="review-headline">{{ review.headline }} - {{ review.rating }}</h1>
-    <p>{{ review.body }}</p>
+    <h1 class="review-headline"><q>{{ review.headline }}</q></h1>
+    <p class="review-rating">{{ review.stars_rating }}</p>
     {% with ticket=review.ticket %}
         {% include "main_feed/partials/ticket_display.html" %}
     {% endwith %}
+    <p class="review-body">{{ review.body }}</p>
 </div>

@@ -16,6 +16,10 @@ class Ticket(models.Model):
     image = models.ImageField(null=True, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def has_review(self):
+        return Review.objects.filter(ticket=self).exists()
+
 
 class Review(models.Model):
     ticket = models.ForeignKey(
@@ -32,6 +36,11 @@ class Review(models.Model):
         on_delete=models.CASCADE
         )
     time_created = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def stars_rating(self):
+        return "" + "★" * self.rating
+
 
 class Comment(models.Model):
     review = models.ForeignKey(

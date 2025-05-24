@@ -7,7 +7,12 @@
     <div class="ticket-body">
         <p class="ticket-body_description">{{ ticket.description }}</p>
         {% if ticket.image %}
-            <img src="">
+            <img src="{{ ticket.image.url }}">
+        {% endif %}
+        {% if not ticket.has_review and not review_creation_context %}
+            {% with ticket_id=ticket.id %}
+            <a href="{% url 'create_review_from_ticket' ticket_id %}" alt="Lien vers la création d'une critique">Créer une critique</a>
+            {% endwith %}
         {% endif %}
     </div>
 </div>

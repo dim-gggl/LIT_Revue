@@ -1,12 +1,12 @@
 from itertools import chain
-from django.shortcuts import HttpResponseRedirect, render, redirect
+from django.shortcuts import HttpResponseRedirect, render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View, ListView, CreateView
-from django.db.models import CharField, Value
+from django.db.models import CharField, Value, Exists, OuterRef
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from authentication.models import User
-from .models import Ticket
+from .models import Ticket, Review
 from .forms import TicketForm, ReviewForm
 from .utils import get_users_viewable_reviews, get_users_viewable_tickets
 
@@ -36,20 +36,20 @@ class HomeView(LoginRequiredMixin, ListView):
     context_object_name = "posts"
 
     def get_queryset(self):
-            reviews = get_users_viewable_reviews(self.request.user)
-            # returns queryset of reviews
-            reviews = reviews.annotate(content_type=Value("REVIEW", CharField()))
-            tickets = get_users_viewable_tickets(self.request.user)
-            # returns queryset of tickets
-            tickets = tickets.annotate(content_type=Value("TICKET", CharField()))
-            # combine and sort the two types of posts
-            posts = sorted(
-                chain(reviews, tickets),
-                key=lambda post: post.time_created,
-                reverse=True
-            )
-            return posts
-    
+        reviews = get_users_viewable_reviews(self.request.user)
+        # returns queryset of reviews
+        reviews = reviews.annotate(content_type=Value("REVIEW", CharField()))
+        tickets = get_users_viewable_tickets(self.request.user)
+        # returns queryset of tickets
+        tickets = tickets.annotate(content_type=Value("TICKET", CharField()))
+        # combine and sort the two types of posts
+        posts = sorted(
+            chain(reviews, tickets),
+            key=lambda post: post.time_created,
+            reverse=True
+        )
+        return posts
+
 
 @login_required
 def create_ticket(request):
@@ -85,9 +85,10 @@ class TicketCreateView(LoginRequiredMixin, CreateView):
 def create_review(request, ticket_id=None):
 
     if ticket_id:
-        ticket = get_object_or_404(
-            Ticket, pk=ticket_id
-            )
+        ticket = get_object_or_404(Ticket, pk=ticket_id)
+        if Review.objects.filter(ticket=ticket).exists():
+            return redirect("homepage")
+
         form = ReviewForm(request.POST or None)
 
         if form.is_valid():
@@ -139,6 +140,13 @@ def feed(request):
     tickets = get_users_viewable_tickets(request.user)
     # returns queryset of tickets
     tickets = tickets.annotate(content_type=Value("TICKET", CharField()))
+    tickets = tickets.annotate(
+        has_review=Exists(
+            Review.objects.filter(
+                ticket=OuterRef("pk")
+                )
+            )
+        )
     # combine and sort the two types of posts
     posts = sorted(
         chain(reviews, tickets),
