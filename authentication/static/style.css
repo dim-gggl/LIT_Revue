@@ -22,6 +22,14 @@ body {
 }
 
 a { text-decoration: none; }
+a:hover {
+  transform: translateY(-2px);
+}
+
+button:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+}
 
 button {
 	text-decoration: none;
@@ -120,6 +128,16 @@ main {
 
 .login-form > ul {
     display: none;
+}
+
+.login-form > a {
+	font-family: "Domine";
+	padding: 0.4ch 6ch;
+	max-width: 4vw;
+	/* margin: 3ch auto; */
+	border-radius: 50px;
+	border: 1px solid #0000003b;
+	box-shadow: -1px 2px 2px #00000075;
 }
 
 .sign-up-invitation {
@@ -334,16 +352,21 @@ form {
 
 fieldset {
 	display: flex;
-	flex-direction: column;
+	/* flex-direction: column; */
 	justify-content: space-around;
 	min-width: 50vw;
 	margin: 2vh auto;
 	padding: 6vh 3vw;
 	border-radius: 80px;
-	box-shadow: inset 2px -4px 6px #0000006b, -4px 4px 8px #00000080;
-	background-color: #0000000a;
-	border-color: white;
+	/* box-shadow: inset 2px -4px 6px #0000006b, -4px 4px 8px #00000080; */
+	/* background-color: #0000000a; */
+	/* border-color: white; */
 	max-width: 80vw;
+	min-height: 20vh;
+}
+
+.create-ticket, .create-review {
+  flex-direction: column;
 }
 
 fieldset > p, form > p {
@@ -358,6 +381,13 @@ fieldset > legend {
   text-align: center;
   font-weight: 900;
   margin: 0 auto;
+}
+
+fieldset ul > li {
+	min-width: 30vw;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .create-review-title {
@@ -461,3 +491,11 @@ div#id_rating > div {
   border: 1px solid #0000003b;
   box-shadow: -1px 2px 2px #00000075;
 }
+
+.ticket-body > img {
+	max-width: 20%;
+	margin: 1vh auto;
+  border: 1px solid #000000;
+}
+
+

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block navbar %}
+  {% include "partials/nav-bar.html" %}
+{% endblock %}
+{% block content %}
+  <section class="followings-main-container">
+    <h1>Abonnements</h1>
+    <fieldset class="followings-list-container">
+      <legend>Vous suivez ({{ following.count }})</legend>
+      <ul>
+        {% for user in following %}
+          <li>{{ user.username }}
+            <a href="{% url 'followings' %}">Ne plus suivre</a>
+          </li>
+        {% empty %}
+          <li>Vous ne suivez personne pour le moment.</li>
+        {% endfor %}
+      </ul>
+    </fieldset>
+
+    <fieldset class="followings-form">
+      <legend>Suivre un nouvel utilisateur</legend>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Envoyer</button>
+      </form>
+    </fieldset>
+
+    <fieldset class="followings-followers">
+      <legend>Vos abonnés ({{ followers.count }})</legend>
+      <ul>
+        {% for user in followers %}
+          <li>{{ user.username }}</li>
+        {% empty %}
+          <li>Vous n’avez pas encore d’abonnés.</li>
+        {% endfor %}
+      </ul>
+    </fieldset>
+  </section>
+{% endblock %}
