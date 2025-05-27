@@ -453,8 +453,7 @@ div#id_rating > div {
 .review-main-container {
   max-width: 50vw;
   margin: 1vh auto;
-  border: 1px solid;
-  border-radius: 15px;
+  border: 0.3px solid;
   overflow: hidden;
   padding: 0 1vw 1vh 1vw;
 }
@@ -463,17 +462,40 @@ div#id_rating > div {
   justify-content: space-between;
   border-bottom: 1px solid;
   min-width: 100%;
-  background-color: floralwhite;
+  background-color: #321602;
   min-height: 100%;
   margin: 0 -1vw;
   padding: 1vh 1vw;
 }
+
+.review-metadata > p {
+  color: #fff8f5;
+  font-family: "Comfortaa";
+  font-weight: 300;
+}
+
 .review-headline {
+  margin: 3vh auto;
   text-align: center;
 }
 .review-rating {
   text-align: center;
 }
+
+.ticket-display {
+  border-radius: 0;
+}
+
+.ticket-metadata {
+  background-color: #321602;
+}
+
+.ticket-metadata > p {
+  color: #fff8f5;
+  font-family: "Comfortaa";
+  font-weight: 300;
+}
+
 .ticket-body_description {
   text-align: center;
 }

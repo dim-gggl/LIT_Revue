@@ -1,11 +1,11 @@
 from django.urls import path
 from main_feed.views import (
-    home,
     create_review,
     HomeView,
     TicketCreateView,
     update_ticket,
-    followings
+    followings,
+    posts_view
     )
 
 
@@ -27,5 +27,6 @@ urlpatterns = [
         update_ticket,
         name="update_ticket"
         ),
-    path("followings/", followings, name="followings")
+    path("followings/", followings, name="followings"),
+    path("posts/", posts_view, name="posts")
 ]

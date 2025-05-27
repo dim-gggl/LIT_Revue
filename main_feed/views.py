@@ -13,10 +13,10 @@ from .utils import get_users_viewable_reviews, get_users_viewable_tickets
 
 
 @login_required
-def home(request):
-    reviews = get_users_viewable_reviews(request.user)
+def posts_view(request):
+    reviews = request.user.review_set.all()
     reviews = reviews.annotate(content_type=Value("REVIEW", CharField()))
-    tickets = get_users_viewable_tickets(request.user)
+    tickets = request.user.ticket_set.all()
     tickets = tickets.annotate(content_type=Value("TICKET", CharField()))
     posts = sorted(
         chain(reviews, tickets),
@@ -25,8 +25,8 @@ def home(request):
     )
     return render(
         request,
-        "main_feed/home.html",
-        context={"posts": posts}
+        "main_feed/posts.html",
+        context={"post": posts}
         )
 
 class HomeView(LoginRequiredMixin, ListView):

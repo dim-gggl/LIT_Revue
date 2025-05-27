@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}LIT Review | Posts{% endblock %}
+{% block content %}
+  <section class="posts-main-container">
+    {% for post in posts %}
+      {% if post.content_type == "REVIEW" %}
+        {% with review=post %}
+          {% include "partials/review_display.html" %}
+        {% endwith %}
+      {% elif post.content_type == "TICKET" %}
+        {% with ticket=post %}
+          {% include "partials/ticket_display.html" %}
+        {% endwith %}
+      {% endif %}
+    {% endfor %}
+    <a href="{% url 'homepage' %}">Retour</a>
+  </section>
+{% endblock %}
+
