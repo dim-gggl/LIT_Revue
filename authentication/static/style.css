@@ -168,14 +168,16 @@ h2.sign-up-invitation-title {
 }
 
 p.login-form-message {
-    border: 0.5px solid #00000045;
-    width: 100%;
-    text-align: center;
-    padding: 1ch;
-    background: floralwhite;
-    font-size: 1.4rem;
-    border-radius: 20px;
-    margin-bottom: 3ch;
+	border: 0.5px solid #00000045;
+	width: 30%;
+	text-align: center;
+	padding: 1ch;
+	background: floralwhite;
+	/* font-size: 1rem; */
+	border-radius: 20px;
+	margin-bottom: 3ch;
+	margin: 1.5vh auto;
+    font-size: 1rem;
 }
 
 .login-form, .logging-out-form {
@@ -304,18 +306,6 @@ flex-direction: column;
   box-shadow: -1px 2px 2px #00000075;
   background-color: #ffffff26;
 }
-p.login-form-message {
-	border: 0.5px solid #00000045;
-	width: 20%;
-	text-align: center;
-	padding: 1ch;
-	background: floralwhite;
-	/* font-size: 1rem; */
-	border-radius: 20px;
-	margin-bottom: 3ch;
-	margin: 1.5vh auto;
-    font-size: 1rem;
-}
 
 .feed_btns-container {
 	max-width: 64vw;
@@ -328,21 +318,23 @@ p.login-form-message {
 a.feed_ticket-btn {
 	text-decoration: none;
 	padding: 0.4ch 6ch;
-	max-width: 206px;
+	max-width: 20vw;
 	margin: 2ch auto;
 	border-radius: 50px;
 	border: 1px solid #0000003b;
 	box-shadow: -1px 2px 2px #00000075;
+  font-weight: 300;
 }
 
 a.feed_review-btn {
 	text-decoration: none;
 	padding: 0.4ch 6ch;
-	max-width: 206px;
+	max-width: 20vw;
 	margin: 2ch auto;
 	border-radius: 50px;
 	border: 1px solid #0000003b;
 	box-shadow: -1px 2px 2px #00000075;
+  font-weight: 300;
 }
 form {
   display: flex;
@@ -431,15 +423,19 @@ div#id_rating > div {
 }
 
 .ticket-title {
-  text-align: center;
+	text-align: center;
+	margin: 2vh auto;
+  font-family: "Comfortaa";
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -1px;
 }
 
 .ticket-display {
   max-width: 50vw;
   margin: 1vh auto;
-  border: 1px solid;
+  border: 0.3px solid;
   min-height: 20vh;
-  border-radius: 16px;
   overflow: hidden;
 }
 
@@ -478,12 +474,14 @@ div#id_rating > div {
   margin: 3vh auto;
   text-align: center;
 }
+
+.review-headline > q {
+  font-family: "Comfortaa";
+  font-weight: 600;
+  font-size: 24px;
+}
 .review-rating {
   text-align: center;
-}
-
-.ticket-display {
-  border-radius: 0;
 }
 
 .ticket-metadata {
@@ -497,11 +495,19 @@ div#id_rating > div {
 }
 
 .ticket-body_description {
-  text-align: center;
+	text-align: center;
+	font-family: "Comfortaa";
+	font-weight: 600;
+	margin: 2vh auto;
 }
+
 .review-body {
   text-align: justify;
   padding: 3vh 2vw;
+  font-weight: 300;
+  font-size: 16px;
+  max-width: 70%;
+  margin: 2vh auto;
 }
 
 .ticket-body > a {
