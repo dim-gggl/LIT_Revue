@@ -1,17 +1,22 @@
-{% extends "base.html" %}
-{% load static %}
-{% block navbar %}
-  {% include "partials/nav-bar.html" %}
-{% endblock %}
-{% block content %}
+{% extends "main_feed/base.html" %}
+{% block feed_title %}Abonnements{% endblock %}
+{% block feed_content %}
   <section class="followings-main-container">
     <h1>Abonnements</h1>
     <fieldset class="followings-list-container">
-      <legend>Vous suivez ({{ following.count }})</legend>
+      <legend>Vos abonnements ({{ following.count }})</legend>
       <ul>
         {% for user in following %}
-          <li>{{ user.username }}
-            <a href="{% url 'followings' %}">Ne plus suivre</a>
+          <li>
+            <p class="unfollow-username">{{ user.username }}</p>
+            <form action="{% url 'unfollow' user.id %}"
+                  method="post"
+                  style="display:inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link p-0">
+                  Ne plus suivre
+              </button>
+            </form>
           </li>
         {% empty %}
           <li>Vous ne suivez personne pour le moment.</li>
@@ -20,11 +25,16 @@
     </fieldset>
 
     <fieldset class="followings-form">
-      <legend>Suivre un nouvel utilisateur</legend>
+      <legend>Suivre un utilisateur</legend>
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Envoyer</button>
+        {% if messages.error %}
+          <p class="error-message">{{ messages.error.message }}</p>
+        {% elif messages.success %}
+          <p class="success-message">{{ messages.success.message }}</p>
+        {% endif %}
       </form>
     </fieldset>
 

@@ -1,7 +1,6 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from authentication.models import User
-from django.conf import settings
+from LITRevue.settings import AUTH_USER_MODEL
 
 from PIL import Image
 
@@ -12,7 +11,7 @@ class Ticket(models.Model):
         max_length=2048, blank=True
         )
     user = models.ForeignKey(
-        to=settings.AUTH_USER_MODEL,
+        to=AUTH_USER_MODEL,
         on_delete=models.CASCADE
         )
     image = models.ImageField(null=True, blank=True)
@@ -39,13 +38,12 @@ class Review(models.Model):
         to=Ticket, on_delete=models.CASCADE
         )
     rating = models.PositiveSmallIntegerField(
-        # validates that rating must be between 0 and 5
         validators=[MinValueValidator(0), MaxValueValidator(5)]
         )
     headline = models.CharField(max_length=128)
     body = models.CharField(max_length=8192, blank=True)
     user = models.ForeignKey(
-        to=settings.AUTH_USER_MODEL,
+        to=AUTH_USER_MODEL,
         on_delete=models.CASCADE
         )
     time_created = models.DateTimeField(auto_now_add=True)
@@ -54,14 +52,17 @@ class Review(models.Model):
     def stars_rating(self):
         return "" + "★" * self.rating
 
+    def __str__(self):
+        return f"Review #{id} - {ticket.title if ticket else 'No Ticket'}"
+
 
 class Comment(models.Model):
     review = models.ForeignKey(
-        to=Review, on_delete=
-        models.CASCADE
+        to=Review,
+        on_delete=models.CASCADE
     )
     author = models.ForeignKey(
-        to=User,
+        to=AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
     time_created = models.DateTimeField(auto_now_add=True)

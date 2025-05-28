@@ -9,4 +9,9 @@
         {% include "main_feed/partials/ticket_display.html" %}
     {% endwith %}
     <p class="review-body">{{ review.body }}</p>
+    {% if update %}
+        {% with review_id=review.id %}
+            <a href="{% url 'update_review' review.id %}">Mettre à jour</a>
+        {% endwith %}
+    {% endif %}
 </div>

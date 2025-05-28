@@ -1,14 +1,14 @@
 {% extends 'main_feed/base.html' %}
-{% block feed_title %}Modification du billet{% endblock %}
+{% block feed_title %}Modification d'une critique{% endblock %}
 {% block feed_content %}
-    <h2>Modifier le billet</h2>
+    <h2>Modifier la critique</h2>
     <form method="post">
         {{ update_form.as_p }}
         {% csrf_token %}
         <button type="submit" >Sauvegarder</button>
     </form>
     <hr>
-    <h3>Supprimer le billet ?</h3>
+    <h3>Supprimer la critique ?</h3>
     <form method="post">
         {{ delete_form }}
         {% csrf_token %}

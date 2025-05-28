@@ -12,6 +12,9 @@ class User(AbstractUser):
         related_name='followers'
     )
 
+    def __str__(self):
+        return self.username
+
 class UserFollows(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,

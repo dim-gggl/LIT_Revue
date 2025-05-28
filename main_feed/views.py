@@ -8,15 +8,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from authentication.models import User, UserFollows
 from .models import Ticket, Review
-from .forms import TicketForm, ReviewForm, UserFollowForm
-from .utils import get_users_viewable_reviews, get_users_viewable_tickets
+from .forms import TicketForm, ReviewForm, UserFollowForm, DeleteReviewForm, DeleteTicketForm
+from .utils import get_users_viewable_reviews, get_users_viewable_tickets, get_users_reviews, get_users_tickets
 
 
 @login_required
 def posts_view(request):
-    reviews = request.user.review_set.all()
+    reviews = get_users_reviews(request.user)
     reviews = reviews.annotate(content_type=Value("REVIEW", CharField()))
-    tickets = request.user.ticket_set.all()
+    tickets = get_users_tickets(request.user)
     tickets = tickets.annotate(content_type=Value("TICKET", CharField()))
     posts = sorted(
         chain(reviews, tickets),
@@ -26,7 +26,7 @@ def posts_view(request):
     return render(
         request,
         "main_feed/posts.html",
-        context={"post": posts}
+        context={"posts": posts}
         )
 
 class HomeView(LoginRequiredMixin, ListView):
@@ -114,13 +114,13 @@ def create_review(request, ticket_id=None):
 
 @login_required
 def update_ticket(request, ticket_id):
-    ticket = Ticket.get_object_or_404(
+    ticket = get_object_or_404(
         Ticket, id=ticket_id
         )
-    update_ticket = forms.TicketForm(
+    update_ticket = TicketForm(
         instance=ticket
         )
-    delete_ticket = forms.DeleteTicketForm()
+    delete_ticket = DeleteTicketForm()
 
     if request.method == "POST":
         if "update_ticket" in request.POST:
@@ -133,7 +133,7 @@ def update_ticket(request, ticket_id):
                 return redirect("homepage")
 
             if "delete_ticket" in request.POST:
-                delete_form = forms.DeleteTicketForm(
+                delete_form = DeleteTicketForm(
                     request.POST
                     )
                 if delete_form.is_valid():
@@ -147,6 +147,44 @@ def update_ticket(request, ticket_id):
     return render(
         request,
         "main_feed/update_ticket.html",
+        context=context
+        )
+
+@login_required
+def update_review(request, review_id):
+    review = get_object_or_404(
+        Review, id=review_id
+        )
+    update_review = ReviewForm(
+        instance=review
+        )
+    delete_review = DeleteReviewForm()
+
+    if request.method == "POST":
+        if "update_review" in request.POST:
+            update_form = forms.ReviewForm(
+                request.POST, instance=review
+                )
+
+            if update_form.is_valid():
+                update_form.save()
+                return redirect("homepage")
+
+            if "delete_review" in request.POST:
+                delete_form = forms.DeleteReviewForm(
+                    request.POST
+                    )
+                if delete_form.is_valid():
+                    review.delete()
+                    return redirect("homepage")
+
+    context = {
+        "update_review": update_review,
+        "delete_review": delete_review
+    }
+    return render(
+        request,
+        "main_feed/update_review.html",
         context=context
         )
 
@@ -198,3 +236,20 @@ def followings(request):
         "followers": followers,
         }
     )
+
+@login_required
+def unfollow_user(request, user_id):
+    target = get_object_or_404(User, pk=user_id)
+    if target == request.user:
+        messages.error(request, "Se désabonner de soi-même ? Joker.")
+    else:
+        deleted, _ = UserFollows.objects.filter(
+            user=request.user,
+            followed_user=target
+        ).delete()
+        if deleted:
+            messages.success(request, f"Vous ne suivez plus {target.username}.")
+        else:
+            messages.info(request, f"Vous ne suiviez déjà plus {target.username}.")
+    return redirect("followings")
+

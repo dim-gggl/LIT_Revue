@@ -1,9 +1,6 @@
-{% extends "base.html" %}
-{% block title %}Accueil{% endblock title %}
-{% block navbar %}
-  {% include "partials/nav-bar.html" %}
-{% endblock %}
-{% block content %}
+{% extends "main_feed/base.html" %}
+{% block feed_title %}Accueil{% endblock %}
+{% block feed_content %}
 <p class="login-form-message">Vous êtes connecté en tant que {{ request.user }}.</p>
 <section class="feed_main-container">
   <div class="feed_btns-container">
@@ -26,4 +23,4 @@
     </div>
   {% endif %}
 </section>
-{% endblock content %}
+{% endblock feed_content %}

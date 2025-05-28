@@ -1,13 +1,6 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block extra_style %}
-  <link rel="stylesheet" href="{% static 'review_form_style.css' %}">
-{% endblock %}
-{% block title%}lit review | Poster une critique{% endblock %}
-{% block navbar %}
-  {% include "partials/nav-bar.html" %}
-{% endblock %}
-{% block content %}
+{% extends 'main_feed/base.html' %}
+{% block feed_title%}Poster une critique{% endblock %}
+{% block feed_content %}
   {% if ticket %}
   <section class="main-review-creation-container">
     <h2 class="create-review-title">Créer une critique</h2>

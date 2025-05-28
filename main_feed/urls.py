@@ -4,8 +4,10 @@ from main_feed.views import (
     HomeView,
     TicketCreateView,
     update_ticket,
+    update_review,
     followings,
-    posts_view
+    posts_view,
+    unfollow_user
     )
 
 
@@ -27,6 +29,12 @@ urlpatterns = [
         update_ticket,
         name="update_ticket"
         ),
+    path(
+        "reviews/update/<int:review_id>/",
+        update_review,
+        name="update_review"
+    ),
     path("followings/", followings, name="followings"),
-    path("posts/", posts_view, name="posts")
+    path("posts/", posts_view, name="posts"),
+    path("followings/unfollow/<int:user_id>/", unfollow_user, name="unfollow")
 ]

@@ -1,5 +1,6 @@
 from django import forms
 from .models import Ticket, Review
+from django.utils.translation import gettext_lazy as _
 
 
 class TicketForm(forms.ModelForm):
@@ -10,6 +11,11 @@ class TicketForm(forms.ModelForm):
         fields = ["title", "description", "image"]
         widgets = {
             "description": forms.Textarea(attrs={"rows": 3}),
+        }
+        labels = {
+            "title": _("Titre"),
+            "description": _("Description"),
+            "image": _("Image")
         }
 
 class ReviewForm(forms.ModelForm):
@@ -22,8 +28,14 @@ class ReviewForm(forms.ModelForm):
             "body": forms.Textarea(attrs={"rows": 4}),
             "rating": forms.RadioSelect(
                 choices=[
-                    (i, f"{i} ★") for i in range(6)
-                    ])
+                    (i, i * "★") for i in range(6)
+                    ]
+                )
+        }
+        labels = {
+            "headline": _("En-tête"),
+            "body": _("Contenu"),
+            "rating": _("Note")
         }
 
 class DeleteTicketForm(forms.Form):
