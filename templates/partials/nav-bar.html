@@ -1,6 +1,8 @@
-<a href="{% url 'homepage' %}" class="nav-bar_feed-btn">Feed</a>
+<a href="{% url 'homepage' %}" class="nav-bar_feed-btn">Fil d'actualités</a>
 {% with following=user.followwing %}
   <a href="{% url 'followings' %}" class="nav-bar_follows-btn">Abonnements</a>
 {% endwith %}
 <a href="{% url 'posts' %}" class="nav-bar_posts-btn">Posts</a>
 <form method="POST" action="{% url 'logout' %}">{% csrf_token %}<button class="nav-bar_logout-btn">Déconnexion</a></form>
+
+

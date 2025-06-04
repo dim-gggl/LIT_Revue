@@ -1,14 +1,11 @@
-{% extends "base.html" %}
-{% block title %}lit review | Demander une critique{% endblock %}
-{% block navbar %}
-  {% include "partials/nav-bar.html" %}
-{% endblock %}
-{% block content %}
-  <h2 class="create-review-title">Demander une critique</h2>
-  <form method="post" enctype="multipart/form-data">
+{% extends "main_feed/base.html" %}
+{% block feed_title %}Demander une critique{% endblock %}
+{% block feed_content %}
+  <h1 class="create-review-title">Demander une critique</h1>
+  <form method="post" enctype="multipart/form-data" aria-labelledby="ticket-form-title">
     {% csrf_token %}
     <fieldset class="create-ticket">
-      <legend>Livre / Article</legend>
+      <legend id="ticket-form-title">Livre / Article</legend>
       {{ form.as_p }}
     </fieldset>
     <button type="submit">Envoyer</button>

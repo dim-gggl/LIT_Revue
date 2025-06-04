@@ -14,5 +14,10 @@
             <a href="{% url 'create_review_from_ticket' ticket_id %}" alt="Lien vers la création d'une critique">Créer une critique</a>
             {% endwith %}
         {% endif %}
+        {% if update %}
+            {% with ticket_id=ticket.id %}
+                <a href="{% url 'update_ticket' ticket.id %}">Modifier</a>
+            {% endwith %}
+        {% endif %}
     </div>
 </div>

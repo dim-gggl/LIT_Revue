@@ -1,12 +1,28 @@
-<div class="review-main-container">
+<section class="review-main-container" aria-labelledby="review-headline-{{ review.id }}">
     <div class="review-metadata">
+        <!-- Display the date/time the review was created -->
         <p class="review-time-created">postée le {{ review.time_created }}</p>
+        <!-- Display the author of the review -->
         <p class="review-author">par {{ review.user }}</p>
     </div>
-    <h1 class="review-headline"><q>{{ review.headline }}</q></h1>
+    <!-- Display the review headline inside quotation marks -->
+    <h2 class="review-headline" id="review-headline-{{ review.id }}"><q>{{ review.headline }}</q></h2>
+    <!-- Display the star rating of the review -->
     <p class="review-rating">{{ review.stars_rating }}</p>
     {% with ticket=review.ticket %}
+        <!-- Include the related ticket display partial, passing the ticket object -->
         {% include "main_feed/partials/ticket_display.html" %}
     {% endwith %}
+    <!-- Display the main body/content of the review -->
     <p class="review-body">{{ review.body }}</p>
-</div>
+    {% if update %}
+        {% with review_id=review.id %}
+            <!-- Show the "Modifier" (Edit) link if update is allowed -->
+            <a href="{% url 'update_review' review.id %}" role="button">Modifier</a>
+        {% endwith %}
+    {% endif %}
+    {% with review_id=review.id %}
+        <!-- Link to the review detail page (comments section) -->
+        <a href="{% url 'review_detail' review_id %}" aria-label="Voir les commentaires de la critique">Commentaires</a>
+    {% endwith %}
+</section>

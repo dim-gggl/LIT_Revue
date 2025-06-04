@@ -289,10 +289,11 @@ span#id_password1_helptext {
 }
 
 .feed_main-container {
-min-height: 100vh;
-min-width: 100vw;
-display: flex;
-flex-direction: column;
+	min-height: 100vh;
+	width: 49vw;
+	display: flex;
+	flex-direction: column;
+	margin-inline: auto;
 }
 
 .feed_btns-container > button {
@@ -344,17 +345,13 @@ form {
 
 fieldset {
 	display: flex;
-	/* flex-direction: column; */
 	justify-content: space-around;
 	min-width: 50vw;
 	margin: 2vh auto;
 	padding: 6vh 3vw;
-	border-radius: 80px;
-	/* box-shadow: inset 2px -4px 6px #0000006b, -4px 4px 8px #00000080; */
-	/* background-color: #0000000a; */
-	/* border-color: white; */
 	max-width: 80vw;
 	min-height: 20vh;
+	border: none;
 }
 
 .create-ticket, .create-review {
@@ -362,17 +359,19 @@ fieldset {
 }
 
 fieldset > p, form > p {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  max-width: 80vw;
-  margin: 1vh auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 35vw;
+	margin: 1vh auto;
 }
 
 fieldset > legend {
-  text-align: center;
-  font-weight: 900;
-  margin: 0 auto;
+	text-align: center;
+	font-weight: 900;
+	margin: 0 auto;
+	text-transform: uppercase;
+	font-family: "Comfortaa";
 }
 
 fieldset ul > li {
@@ -384,8 +383,10 @@ fieldset ul > li {
 
 .create-review-title {
 	text-align: center;
-	margin: 2vh auto;
+	margin: 10vh auto;
 	font-size: 1.5rem;
+	font-family: "Comfortaa";
+	text-transform: uppercase;
 }
 
 fieldset p > label {
@@ -399,10 +400,21 @@ fieldset p > input, fieldset p > textarea {
 	min-width: 30vw;
 }
 
+#id_image {
+	margin: 1vh auto;
+	justify-content: center;
+	display: flex;
+	padding-left: 10vw;
+}
+
 #id_rating {
   display: flex;
   justify-content: center;
   padding: 2vh;
+}
+
+#id_rating label {
+	font-size: 24px;
 }
 
 div#id_rating > div {
@@ -432,11 +444,12 @@ div#id_rating > div {
 }
 
 .ticket-display {
-  max-width: 50vw;
-  margin: 1vh auto;
-  border: 0.3px solid;
-  min-height: 20vh;
-  overflow: hidden;
+	/* max-width: 50vw; */
+	/* margin: 1vh auto; */
+	border: 0.3px solid;
+	/* min-height: 100%; */
+	/* overflow: hidden; */
+	min-width: 100%;
 }
 
 .ticket-body {
@@ -453,12 +466,13 @@ div#id_rating > div {
   overflow: hidden;
   padding: 0 1vw 1vh 1vw;
 }
+
 .review-metadata {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid;
   min-width: 100%;
-  background-color: #321602;
+  background: linear-gradient(34deg, #170a00 1%, #281101 24%, #3c1b03 70%, #592c0b 100%);
   min-height: 100%;
   margin: 0 -1vw;
   padding: 1vh 1vw;
@@ -485,7 +499,7 @@ div#id_rating > div {
 }
 
 .ticket-metadata {
-  background-color: #321602;
+  background: linear-gradient(34deg, #170a00 1%, #281101 24%, #3c1b03 70%, #592c0b 100%);
 }
 
 .ticket-metadata > p {
@@ -526,4 +540,77 @@ div#id_rating > div {
   border: 1px solid #000000;
 }
 
+.followings-main-container > h1 {
+	text-align: center;
+	font-size: 24px;
+	margin: 10vh auto;
+	text-transform: uppercase;
+	font-family: "Comfortaa";
+	font-weight: 600;
+}
+
+.unfollow-username {
+	min-height: 100%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+}
+
+.btn.btn-link.p-0 {
+	font-size: 14px;
+	margin: 01vh;
+	padding: 0.4ch 2vw;
+	font-family: "Comfortaa";
+	background-color: #562b0b;
+	color: #fff8f5;
+}
+
+#id_username {
+	max-width: 93%;
+	min-width: 51%;
+	margin: 1vh auto;
+}
+
+.posts-main-container {
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	max-width: 77vw;
+	margin: 2vh auto;
+}
+
+.no-post-to-display-msg {
+	text-align: center;
+}
+
+.posts-main-container a {
+	text-decoration: none;
+	padding: 0.4ch 6ch;
+	max-width: 20vw;
+	margin: 2ch auto;
+	border-radius: 50px;
+	border: 1px solid #0000003b;
+	box-shadow: -1px 2px 2px #00000075;
+	font-weight: 300;
+}
+
+.update-post-title {
+	text-align: center;
+	font-family: "Comfortaa";
+	font-size: 26px;
+	text-transform: uppercase;
+	margin: 3vh auto;
+}
+
+form > p > label {
+	text-align: center;
+	font-family: "Comfortaa";
+	margin-top: 4vh;
+}
+
+label[for="id_title"], label[for="id_description"], label[for="id_image"] {
+	text-align: center;
+	/* font-size: 22px; */
+	text-transform: uppercase;
+}
 

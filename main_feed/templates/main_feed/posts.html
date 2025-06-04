@@ -1,19 +1,25 @@
-{% extends "base.html" %}
-{% block title %}LIT Review | Posts{% endblock %}
-{% block content %}
-  <section class="posts-main-container">
-    {% for post in posts %}
+{% extends "main_feed/base.html" %}
+{% block feed_title %}Posts{% endblock %}
+{% block feed_content %}
+  <section class="posts-main-container" aria-labelledby="posts-title">
+    <h1 id="posts-title" class="sr-only">Vos posts</h1>
+    {# Loop through all personal posts #}
+    {% for post in personal_posts %}
       {% if post.content_type == "REVIEW" %}
-        {% with review=post %}
-          {% include "partials/review_display.html" %}
+        {# If the post is a review, pass it as 'review' to the partial template #}
+        {% with review=post update=True %}
+          {% include "main_feed/partials/review_display.html" %}
         {% endwith %}
       {% elif post.content_type == "TICKET" %}
-        {% with ticket=post %}
-          {% include "partials/ticket_display.html" %}
+        {# If the post is a ticket, pass it as 'ticket' to the partial template #}
+        {% with ticket=post update=True %}
+          {% include "main_feed/partials/ticket_display.html" %}
         {% endwith %}
       {% endif %}
+    {% empty %}
+      {# Message if there are no posts to display #}
+      <p class="no-post-to-display-msg" aria-live="polite">Vous n'avez pas encore de posts à afficher</p>
     {% endfor %}
-    <a href="{% url 'homepage' %}">Retour</a>
+    <a href="{% url 'homepage' %}" role="button">Retour</a>
   </section>
 {% endblock %}
-

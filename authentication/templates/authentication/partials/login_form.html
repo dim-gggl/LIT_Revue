@@ -1,0 +1,12 @@
+<form method="POST" aria-describedby="form-message">
+    <!-- Render the Django form fields as <p> elements -->
+    {{ form.as_p }}
+    <!-- CSRF token for security -->
+    {% csrf_token %}
+    <!-- Submit button, customizable text via 'button_text' context variable -->
+    <button type="submit" class="login-submit-btn">{{ button_text|default:"Soumettre" }}</button>
+    <!-- Display a message if one is provided in the context -->
+    {% if message %}
+        <p class="login-form-message" id="form-message" aria-live="polite">{{ message }}</p>
+    {% endif %}
+</form>

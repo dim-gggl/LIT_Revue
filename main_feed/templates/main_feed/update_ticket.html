@@ -1,17 +1,23 @@
-{% extends 'base.html' %}
-{% block title %}LIT Review | Modification du billet{% endblock %}
-{% block content %}
-    <h2>Modifier le billet</h2>
-    <form method="post">
+{% extends 'main_feed/base.html' %}
+
+{% block feed_title %}
+    Modification du billet
+{% endblock %}
+
+{% block feed_content %}
+    <main aria-labelledby="update-ticket-title">
+    <h1 class="update-post-title" id="update-ticket-title">Modifier le billet</h1>
+    <form method="post" aria-label="Formulaire de modification du billet">
         {{ update_form.as_p }}
         {% csrf_token %}
-        <button type="submit" >Sauvegarder</button>
+        <button type="submit">Sauvegarder</button>
     </form>
     <hr>
-    <h3>Supprimer le billet ?</h3>
-    <form method="post">
+    <h2 class="update-post-title">Supprimer le billet ?</h2>
+    <form method="post" aria-label="Formulaire de suppression du billet">
         {{ delete_form }}
         {% csrf_token %}
-        <button type="submit" >Supprimer</button>
+        <button type="submit">Supprimer</button>
     </form>
+    </main>
 {% endblock %}

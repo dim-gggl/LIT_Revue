@@ -1,0 +1,21 @@
+{% extends 'main_feed/base.html' %}
+{% block feed_title %}Modification d'une critique{% endblock %}
+{% block feed_content %}
+    <main aria-labelledby="update-review-title">
+    <h1 id="update-review-title">Modifier la critique</h1>
+    <!-- Formulaire pour modifier la critique existante -->
+    <form method="post" aria-label="Formulaire de modification de la critique">
+        {{ update_form.as_p }} <!-- Affiche les champs du formulaire de modification -->
+        {% csrf_token %} <!-- Protection CSRF obligatoire pour les formulaires POST -->
+        <button type="submit" >Sauvegarder</button>
+    </form>
+    <hr>
+    <h2>Supprimer la critique ?</h2>
+    <!-- Formulaire séparé pour supprimer la critique -->
+    <form method="post" aria-label="Formulaire de suppression de la critique">
+        {{ delete_form.as_p }} <!-- Affiche le formulaire de suppression (souvent un bouton de confirmation) -->
+        {% csrf_token %} <!-- Protection CSRF pour ce formulaire aussi -->
+        <button type="submit" >Supprimer</button>
+    </form>
+    </main>
+{% endblock %}

@@ -1,17 +1,28 @@
-{% extends "base.html" %}
-{% load static %}
-{% block navbar %}
-  {% include "partials/nav-bar.html" %}
-{% endblock %}
-{% block content %}
-  <section class="followings-main-container">
-    <h1>Abonnements</h1>
+{% extends "main_feed/base.html" %}
+{% block feed_title %}Abonnements{% endblock %}
+{% block feed_content %}
+  <section class="followings-main-container" aria-labelledby="followings-title">
+    <h1 id="followings-title">Abonnements</h1>
     <fieldset class="followings-list-container">
-      <legend>Vous suivez ({{ following.count }})</legend>
+      <legend>Vos abonnements ({{ following.count }})</legend>
       <ul>
         {% for user in following %}
-          <li>{{ user.username }}
-            <a href="{% url 'followings' %}">Ne plus suivre</a>
+          <li>
+            <p class="unfollow-username">{{ user.username }}</p>
+            <!-- Form to unfollow a user -->
+            <form action="{% url 'unfollow' user.id %}"
+                  method="post"
+                  style="display:inline"
+                  aria-label="Ne plus suivre {{ user.username }}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link p-0">
+                  Ne plus suivre
+              </button>
+              {% if message %}
+                <!-- Display message if present (e.g., success/error) -->
+                <p class="unfollow-message" aria-live="polite">{{ message }}</p>
+              {% endif %}
+            </form>
           </li>
         {% empty %}
           <li>Vous ne suivez personne pour le moment.</li>
@@ -20,11 +31,16 @@
     </fieldset>
 
     <fieldset class="followings-form">
-      <legend>Suivre un nouvel utilisateur</legend>
-      <form method="post">
+      <legend>Suivre un utilisateur</legend>
+      <!-- Form to follow a new user -->
+      <form method="post" aria-label="Formulaire pour suivre un utilisateur">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Envoyer</button>
+        {% if message %}
+          <!-- Display message if present (e.g., success/error) -->
+          <p class="following-message" aria-live="polite">{{ message }}</p>
+        {% endif %}
       </form>
     </fieldset>
 

@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
+
 {% block title %} LIT Review | Authentification {% endblock title %}
+
 {% block content %}
-<div class="login-form-container">
-  {% block sign_up_invitation %}{% endblock %}
-  <form method="post" class="login-form">
-    <h2 class="login-form-title">{% block form_title %}{% endblock %}</h2>
-    {% block form %}{% endblock %}
-  </form>
-</div>
+  <div class="login-form-container">
+    {# Block for sign up invitation (e.g., "Don't have an account? Sign up!") #}
+    {% block sign_up_invitation %}{% endblock %}
+
+    <form method="post" class="login-form" aria-labelledby="form-title">
+      {# Title of the form (e.g., "Login", "Register") #}
+      <h2 class="login-form-title" id="form-title">{% block form_title %}{% endblock %}</h2>
+
+      {# Main form fields (username, password, etc.) #}
+      {% block form %}{% endblock %}
+    </form>
+  </div>
+
 {% endblock content %}

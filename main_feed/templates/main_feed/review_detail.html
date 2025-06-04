@@ -1,0 +1,60 @@
+{% extends "main_feed/base.html" %}
+{% block feed_title %}
+Détail de la critique
+{% endblock %}
+
+{% block feed_content %}
+<main aria-labelledby="review-detail-title">
+<h1 id="review-detail-title">Détail de la critique</h1>
+<!-- Affichage du titre de la critique -->
+<h2>« {{ review.headline }} »</h2>
+
+<!-- Affichage de l'auteur et de la date de création -->
+<p><em>par {{ review.user.username }}, le {{ review.time_created|date:"d/m/Y H:i" }}</em></p>
+
+<!-- Affichage de la note (nombre d'étoiles et note sur 5) -->
+<p>Note : {{ review.stars_rating }} ({{ review.rating }}/5)</p>
+
+<!-- Corps de la critique, avec gestion des retours à la ligne -->
+<p>{{ review.body|linebreaks }}</p>
+
+{% if review.ticket %}
+    <div class="ticket-origin">
+        <!-- Affichage du billet d'origine si la critique répond à un billet -->
+        <h3>En réponse au billet : "{{ review.ticket.title }}"</h3>
+        <p><strong>{{ review.ticket.user.username }}</strong> avait demandé :</p>
+        <p>{{ review.ticket.description|linebreaks }}</p>
+        {% if review.ticket.image %}
+            <!-- Affichage de l'image du billet si elle existe -->
+            <p><img src="{{ review.ticket.image.url }}" alt="Image du billet : {{ review.ticket.title }}"></p>
+        {% endif %}
+    </div>
+{% endif %}
+
+<hr/>
+
+<!-- Section des commentaires -->
+<h2>Commentaires ({{ comments|length }})</h2>
+
+{% for comment in comments %}
+    <!-- Affichage de chaque commentaire avec auteur et date -->
+    <article aria-label="Commentaire de {{ comment.author.username }}">
+        <p><strong>{{ comment.author.username }}</strong>, le {{ comment.time_created|date:"d/m/Y H:i" }} :</p>
+        <p>{{ comment.content|linebreaks }}</p>
+    </article>
+{% empty %}
+    <!-- Message si aucun commentaire n'est présent -->
+    <p>Aucun commentaire pour le moment.</p>
+{% endfor %}
+
+<hr/>
+
+<!-- Formulaire pour ajouter un nouveau commentaire -->
+<h3>Ajouter un commentaire :</h3>
+<form method="post" aria-label="Ajouter un commentaire">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Publier</button>
+</form>
+</main>
+{% endblock %}

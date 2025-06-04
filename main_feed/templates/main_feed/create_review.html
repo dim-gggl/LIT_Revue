@@ -1,39 +1,34 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block extra_style %}
-  <link rel="stylesheet" href="{% static 'review_form_style.css' %}">
-{% endblock %}
-{% block title%}lit review | Poster une critique{% endblock %}
-{% block navbar %}
-  {% include "partials/nav-bar.html" %}
-{% endblock %}
-{% block content %}
+{% extends 'main_feed/base.html' %}
+{% block feed_title%}Poster une critique{% endblock %}
+{% block feed_content %}
   {% if ticket %}
-  <section class="main-review-creation-container">
-    <h2 class="create-review-title">Créer une critique</h2>
+  <section class="main-review-creation-container" aria-labelledby="review-create-title">
+    <h1 class="create-review-title" id="review-create-title">Créer une critique</h1>
+    {# If a ticket already exists, display its details using the partial template #}
     {% with ticket=ticket review_creation_context=True %}
       {% include "main_feed/partials/ticket_display.html" %}
     {% endwith %}
     <div class="review-creation-container">
-      <form method="post">
+      <form method="post" aria-labelledby="review-create-title">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_p }} {# Review form fields #}
         <button type="submit">Envoyer</button>
       </form>
     </div>
   </section>
 
   {% else %}
-    <h2 class="create-review-title">Créer une critique</h2>
-    <form method="post" enctype="multipart/form-data">
+    <h1 class="create-review-title" id="review-create-title">Créer une critique</h1>
+    {# If no ticket exists, allow user to create both a ticket and a review #}
+    <form method="post" enctype="multipart/form-data" aria-labelledby="review-create-title">
       {% csrf_token %}
       <fieldset class="create-ticket">
         <legend>Livre / Article</legend>
-        {{ ticket_form.as_p }}
+        {{ ticket_form.as_p }} {# Ticket creation form fields #}
       </fieldset>
       <fieldset class="create-review">
         <legend>Critique</legend>
-        {{ review_form.as_p }}
+        {{ review_form.as_p }} {# Review creation form fields #}
       </fieldset>
       <button type="submit">Envoyer</button>
     </form>

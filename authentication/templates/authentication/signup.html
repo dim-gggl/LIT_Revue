@@ -1,8 +1,13 @@
 {% extends 'authentication/base_authentication.html' %}
+
+{# Block for the form title #}
 {% block form_title %}Inscription{% endblock %}
+
 {% block form %}
+  {# Pass a custom button text to the included login_form partial #}
   {% with button_text="S'inscrire" %}
-    {% include "authentication/snippets/login_form.html" %}
+    {% include "authentication/partials/login_form.html" %}
   {% endwith %}
-  <a href="{% url 'login' %}">Retour</a>
+  {# Link to return to the login page #}
+  <a href="{% url 'login' %}" role="button">Retour</a>
 {% endblock %}
