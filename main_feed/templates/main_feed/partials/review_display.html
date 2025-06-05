@@ -14,7 +14,7 @@
         {% include "main_feed/partials/ticket_display.html" %}
     {% endwith %}
     <!-- Display the main body/content of the review -->
-    <p class="review-body">{{ review.body }}</p>
+    <p class="review-body">{{ review.body|linebreaksbr }}</p>
     {% if update %}
         {% with review_id=review.id %}
             <!-- Show the "Modifier" (Edit) link if update is allowed -->
@@ -23,6 +23,6 @@
     {% endif %}
     {% with review_id=review.id %}
         <!-- Link to the review detail page (comments section) -->
-        <a href="{% url 'review_detail' review_id %}" aria-label="Voir les commentaires de la critique">Commentaires</a>
+        <a href="{% url 'review_detail' review_id %}" aria-label="Voir les commentaires de la critique" class="comment-btn" role="button">Commentaires</a>
     {% endwith %}
 </section>

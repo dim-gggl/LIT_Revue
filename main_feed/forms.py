@@ -71,8 +71,8 @@ class ReviewForm(forms.ModelForm):
             "rating": forms.RadioSelect(
                 choices=[
                     (i, i * "★") for i in range(6)
-                    ]
-                )
+                ]
+            )
         }
         labels = {
             "headline": _("En-tête"),
@@ -112,13 +112,13 @@ class UserFollowForm(forms.Form):
         the username of the user to search for and follow.
             - Label: "Rechercher un utilisateur"
             - Max length: 150 characters
-            - Placeholder: "Entrez un nom d’utilisateur"
+            - Placeholder: "Entrez un nom d'utilisateur"
     """
     username = forms.CharField(
         label="Rechercher un utilisateur",
         max_length=150,
         widget=forms.TextInput(attrs={
-            "placeholder": "Entrez un nom d’utilisateur"
+            "placeholder": "Entrez un nom d'utilisateur"
         })
     )
 

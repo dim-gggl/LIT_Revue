@@ -11,12 +11,12 @@
         {% endif %}
         {% if not ticket.has_review and not review_creation_context %}
             {% with ticket_id=ticket.id %}
-            <a href="{% url 'create_review_from_ticket' ticket_id %}" alt="Lien vers la création d'une critique">Créer une critique</a>
+            <a href="{% url 'create_review_from_ticket' ticket_id %}" alt="Lien vers la création d'une critique" class="create-review-btn">Créer une critique</a>
             {% endwith %}
         {% endif %}
         {% if update %}
             {% with ticket_id=ticket.id %}
-                <a href="{% url 'update_ticket' ticket.id %}">Modifier</a>
+                <a href="{% url 'update_ticket' ticket.id %}" class="modify-btn" role="button">Modifier</a>
             {% endwith %}
         {% endif %}
     </div>

@@ -467,7 +467,9 @@ def unfollow_user(request, user_id):
     Otherwise, attempts to remove the follow relationship
     between the requesting user and the target user.
     Displays a success message if the unfollow action was
-    successful, or an informational message if the user was not being followed.
+    successful, or an informational message if the user was
+    not being followed.
+
     Redirects the user to the "followings" page.
 
     Args:

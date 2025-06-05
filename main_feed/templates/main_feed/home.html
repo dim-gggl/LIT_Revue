@@ -3,7 +3,6 @@
 {% block feed_content %}
 <p class="login-form-message" aria-live="polite">Vous êtes connecté en tant que {{ request.user }}.</p>
 <section class="feed_main-container" aria-labelledby="feed-actions-title">
-  <h1 id="feed-actions-title" class="sr-only">Actions principales</h1>
   <div class="feed_btns-container">
     <!-- Button to create a new ticket (demander une critique) -->
     <a href="{% url 'create_ticket' %}" class="feed_ticket-btn" role="button">Demander une critique</a>

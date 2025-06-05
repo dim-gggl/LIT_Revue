@@ -59,8 +59,8 @@ Use these accounts to explore a pre-populated interface with posts, reviews, fol
 `authentication/`:  user account management
 
 `main_feed/`: posts, reviews, comments, follows
-`templates/`       : HTML templates
-`static/`          : CSS and other static files
+`templates/`: HTML templates
+`static/`: CSS and other static files
 
 ⸻
 

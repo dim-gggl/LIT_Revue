@@ -2,12 +2,12 @@
 {% block feed_title %}Demander une critique{% endblock %}
 {% block feed_content %}
   <h1 class="create-review-title">Demander une critique</h1>
-  <form method="post" enctype="multipart/form-data" aria-labelledby="ticket-form-title">
+  <form method="post" enctype="multipart/form-data" class="create-ticket-container" aria-labelledby="ticket-form-title">
     {% csrf_token %}
     <fieldset class="create-ticket">
       <legend id="ticket-form-title">Livre / Article</legend>
       {{ form.as_p }}
     </fieldset>
-    <button type="submit">Envoyer</button>
+    <button type="submit" class="submit-btn">Envoyer</button>
   </form>
 {% endblock %}
