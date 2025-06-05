@@ -7,7 +7,7 @@
     <form method="post" aria-label="Formulaire de modification de la critique">
         {{ update_form.as_p }} <!-- Affiche les champs du formulaire de modification -->
         {% csrf_token %} <!-- Protection CSRF obligatoire pour les formulaires POST -->
-        <button type="submit" >Sauvegarder</button>
+        <button type="submit" alt="enregistrer les modifications" tabindex=0>Sauvegarder</button>
     </form>
     <hr>
     <h2>Supprimer la critique ?</h2>
@@ -15,7 +15,7 @@
     <form method="post" aria-label="Formulaire de suppression de la critique">
         {{ delete_form.as_p }} <!-- Affiche le formulaire de suppression (souvent un bouton de confirmation) -->
         {% csrf_token %} <!-- Protection CSRF pour ce formulaire aussi -->
-        <button type="submit" >Supprimer</button>
+        <button type="submit" alt="supprimer la critique" tabindex=1>Supprimer</button>
     </form>
     </main>
 {% endblock %}

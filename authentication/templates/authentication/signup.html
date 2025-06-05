@@ -9,5 +9,7 @@
     {% include "authentication/partials/login_form.html" %}
   {% endwith %}
   {# Link to return to the login page #}
-  <a href="{% url 'login' %}" class="login-submit-btn" role="button">Retour</a>
+  <a href="{% url 'login' %}" class="login-submit-btn" alt="retour à la page d'accueil" tabindex=0 role="button">
+    Retour
+  </a>
 {% endblock %}

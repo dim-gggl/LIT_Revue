@@ -1,17 +1,24 @@
+:root {
+  --thin-round-font: "Comfortaa", "Helvetica Neue", sans-serif;
+  --serif-font: "Domine", "EB Garamond", Baskervville, serif;
+  --brown-bg-gradient: linear-gradient(34deg, #170a00 1%, #281101 24%, #3c1b03 70%, #592c0b 100%)
+  --lit-review-font: "Montserrat Alternates", sans-serif;
+  --navbar-text-shadow: 0.8px -0.8px 2px #060000, -0.5px 0.5px 0.6px #fdfcfc;
+}
+
 * {
   margin: 0;
   padding: 0;
-  font-size: 16px;
-  color: #111111;
+
 }
 
 html {
   min-height: 100%;
-  padding: 0;
-  margin: 0;
-  font-family: "Domine", "EB Garamond", Baskervville, serif;
+  font-family: var(--serif-font);
   font-weight: 600;
   background-color: #fff8f5f3;
+  color: #111111;
+  font-size: 16px;
 }
 
 body {
@@ -21,11 +28,8 @@ body {
   padding: 0;
 }
 
-a {
-  text-decoration: none;
-}
-
 a:hover {
+  cursor: pointer;
   transform: translateY(-2px);
 }
 
@@ -34,7 +38,7 @@ button:hover {
   transform: translateY(-2px);
 }
 
-button {
+button, a {
   text-decoration: none;
   padding: 0.4ch 6ch;
   max-width: 206px;
@@ -51,20 +55,18 @@ button {
   width: 100vw;
   height: 20vh;
   background-color: rgb(176, 176, 176);
-  /*! align-content: center; */
-  background: linear-gradient(34deg, #170a00 1%, #281101 24%, #3c1b03 70%, #592c0b 100%);
+  background: var(--brown-bg-gradient);
   border-bottom: 4px solid #000;
   box-shadow: inset 3px -5px 12px #000000;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /*! padding: 0px 1px 0 74px; */
 }
 
 .banner h1 {
   margin: auto 0;
   text-align: right;
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: var(--lit-review-font);
   font-weight: 300;
   text-transform: lowercase;
   font-size: 2.7rem;
@@ -75,10 +77,7 @@ button {
   position: relative;
   padding-top: -13px;
   order: 1;
-  /*! height: 24%; */
-  /*! padding-top: 0.5%; */
   width: 55%;
-  /*! padding-left: 8.5%; */
 }
 
 .navbar {
@@ -97,7 +96,7 @@ button {
 .nav-bar_logout-btn {
   background: transparent;
   text-decoration: none;
-  font-family: "Domine";
+  font-family: var(--serif-font);
   padding: .4rem 1.5rem;
   text-align: center;
   font-size: 16.5px;
@@ -107,7 +106,7 @@ button {
   font-weight: 800;
   font-variant: all-petite-caps;
   color: #e8d9c2b0;
-  text-shadow: 0.8px -0.8px 2px #060000, -0.5px 0.5px 0.6px #fdfcfc;
+  text-shadow: var(--navbar-text-shadow);
 }
 
 .nav-bar_logout-btn {
@@ -126,7 +125,6 @@ main {
   display: flex;
   justify-content: space-evenly;
   margin: 0 2ch;
-  /* justify-items: center; */
   padding: 2ch;
 }
 
@@ -135,19 +133,13 @@ main {
 }
 
 .login-form>a {
-  font-family: "Domine";
-  padding: 0.4ch 6ch;
+  font-family: var(--serif-font);
   max-width: 4vw;
-  /* margin: 3ch auto; */
-  border-radius: 50px;
-  border: 1px solid #0000003b;
-  box-shadow: -1px 2px 2px #00000075;
 }
 
 .sign-up-invitation {
   min-width: 40%;
   text-align: center;
-  /* align-items: center; */
   align-content: space-evenly;
 }
 
@@ -162,13 +154,7 @@ h2.sign-up-invitation-title {
 }
 
 .sign-up-invitation a {
-  text-decoration: none;
-  padding: 0.4ch 6ch;
-  max-width: 206px;
   margin: 2ch auto;
-  border-radius: 50px;
-  border: 1px solid #0000003b;
-  box-shadow: -1px 2px 2px #00000075;
 }
 
 p.login-form-message {
@@ -177,7 +163,6 @@ p.login-form-message {
   text-align: center;
   padding: 1ch;
   background: floralwhite;
-  /* font-size: 1rem; */
   border-radius: 20px;
   margin-bottom: 3ch;
   margin: 1.5vh auto;
@@ -221,7 +206,7 @@ p.login-form-message {
 }
 
 .login-submit-btn {
-  font-family: "Domine";
+  font-family: var(--serif-font);
   padding: 0.4ch 6ch;
   max-width: 206px;
   margin: 3ch auto;
@@ -261,10 +246,7 @@ p.login-form-message {
   max-width: 52%;
   font-size: 0.5rem;
   background-color: #fffdfb;
-  /* border-radius: 10px; */
-  /* border-left: 3px solid #cae0f2; */
   padding: 1.3ch 4ch;
-  /* box-shadow: -2px 3px 6px #494949a6, inset 1px -1px 3px #0000005c; */
   font-size: 0.7rem;
   text-align: center;
   color: #9a9997d4;
@@ -303,15 +285,10 @@ span#id_password1_helptext {
 }
 
 .feed_btns-container>button {
-  /*! border-radius: 10px; */
-  font-family: "Domine";
+  font-family: var(--serif-font);
   padding: 0.4ch 3ch;
   max-width: 222.5px;
   margin: 3ch auto;
-  border-radius: 50px;
-  border: 1px solid #0000003b;
-  box-shadow: -1px 2px 2px #00000075;
-  background-color: #ffffff26;
 }
 
 .feed_btns-container {
@@ -380,7 +357,7 @@ fieldset>legend {
   font-weight: 900;
   margin: 0 auto;
   text-transform: uppercase;
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
 }
 
 fieldset ul>li {
@@ -394,7 +371,7 @@ fieldset ul>li {
   text-align: center;
   margin: 10vh auto;
   font-size: 1.5rem;
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   text-transform: uppercase;
 }
 
@@ -447,7 +424,7 @@ div#id_rating>div {
 .ticket-title {
   text-align: center;
   margin: 2vh auto;
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   font-weight: 600;
   font-size: 24px;
   letter-spacing: -1px;
@@ -490,7 +467,7 @@ div#id_rating>div {
 
 .review-metadata>p {
   color: #fff8f5;
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   font-weight: 300;
 }
 
@@ -500,7 +477,7 @@ div#id_rating>div {
 }
 
 .review-headline>q {
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   font-weight: 600;
   font-size: 24px;
 }
@@ -515,13 +492,13 @@ div#id_rating>div {
 
 .ticket-metadata>p {
   color: #fff8f5;
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   font-weight: 300;
 }
 
 .ticket-body_description {
   text-align: center;
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   font-weight: 600;
   margin: 2vh auto;
 }
@@ -556,7 +533,7 @@ div#id_rating>div {
   font-size: 24px;
   margin: 10vh auto;
   text-transform: uppercase;
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   font-weight: 600;
 }
 
@@ -571,7 +548,7 @@ div#id_rating>div {
   font-size: 14px;
   margin: 01vh;
   padding: 0.4ch 2vw;
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   background-color: #562b0b;
   color: #fff8f5;
 }
@@ -607,7 +584,7 @@ div#id_rating>div {
 
 .update-post-title {
   text-align: center;
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   font-size: 26px;
   text-transform: uppercase;
   margin: 3vh auto;
@@ -615,7 +592,7 @@ div#id_rating>div {
 
 form>p>label {
   text-align: center;
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   margin-top: 4vh;
 }
 
@@ -644,7 +621,7 @@ a[href="/"] {
 }
 
 .comment-content {
-  font-family: "Comfortaa";
+  font-family: var(--thin-round-font);
   font-weight: 900;
   text-transform: uppercase;
   margin: 3vh 0;

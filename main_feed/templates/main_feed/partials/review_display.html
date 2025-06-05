@@ -18,11 +18,11 @@
     {% if update %}
         {% with review_id=review.id %}
             <!-- Show the "Modifier" (Edit) link if update is allowed -->
-            <a href="{% url 'update_review' review.id %}" role="button">Modifier</a>
+            <a href="{% url 'update_review' review.id %}" alt="lien vers la modification d'une critique" tabindex=0>Modifier</a>
         {% endwith %}
     {% endif %}
     {% with review_id=review.id %}
         <!-- Link to the review detail page (comments section) -->
-        <a href="{% url 'review_detail' review_id %}" aria-label="Voir les commentaires de la critique" class="comment-btn" role="button">Commentaires</a>
+        <a href="{% url 'review_detail' review_id %}" aria-label="Voir les commentaires de la critique" class="comment-btn" role="button" tabindex=1>Commentaires</a>
     {% endwith %}
 </section>

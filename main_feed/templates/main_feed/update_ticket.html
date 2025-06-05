@@ -17,7 +17,7 @@
     <form method="post" aria-label="Formulaire de suppression du billet">
         {{ delete_form }}
         {% csrf_token %}
-        <button type="submit">Supprimer</button>
+        <button type="submit" alt="supprimer le billet" tabindex=0>Supprimer</button>
     </form>
     </main>
 {% endblock %}

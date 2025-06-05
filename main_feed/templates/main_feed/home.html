@@ -5,9 +5,9 @@
 <section class="feed_main-container" aria-labelledby="feed-actions-title">
   <div class="feed_btns-container">
     <!-- Button to create a new ticket (demander une critique) -->
-    <a href="{% url 'create_ticket' %}" class="feed_ticket-btn" role="button">Demander une critique</a>
+    <a href="{% url 'create_ticket' %}" class="feed_ticket-btn" tabindex=0 role="button">Demander une critique</a>
     <!-- Button to create a new review (publier une critique) -->
-    <a href="{% url 'create_review' %}" class="feed_review-btn" role="button">Publier une critique</a>
+    <a href="{% url 'create_review' %}" class="feed_review-btn" tabindex=1 role="button">Publier une critique</a>
   </div>
   {% if posts %}
     <div class="feed">

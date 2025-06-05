@@ -1,8 +1,10 @@
-<a href="{% url 'homepage' %}" class="nav-bar_feed-btn">Fil</a>
+<a href="{% url 'homepage' %}" class="nav-bar_feed-btn" alt="Fil d'actualité" tabindex=0>Fil</a>
 {% with following=user.followwing %}
-  <a href="{% url 'followings' %}" class="nav-bar_follows-btn">Abonnements</a>
+  <a href="{% url 'followings' %}" class="nav-bar_follows-btn" alt="Abonnements" tabindex=0>Abonnements</a>
 {% endwith %}
-<a href="{% url 'posts' %}" class="nav-bar_posts-btn">Posts</a>
-<form method="POST" action="{% url 'logout' %}">{% csrf_token %}<button class="nav-bar_logout-btn">Déconnexion</a></form>
+<a href="{% url 'posts' %}" class="nav-bar_posts-btn" alt="posts personnels" tabindex=0>Posts</a>
+<form method="POST" action="{% url 'logout' %}">{% csrf_token %}
+  <button class="nav-bar_logout-btn" alt="Déconnexion" tabindex=1>Déconnexion</button>
+</form>
 
 

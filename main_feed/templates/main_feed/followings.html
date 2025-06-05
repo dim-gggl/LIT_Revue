@@ -15,7 +15,7 @@
                   style="display:inline"
                   aria-label="Ne plus suivre {{ user.username }}">
               {% csrf_token %}
-              <button type="submit" class="btn btn-link p-0">
+              <button type="submit" alt="unfollow button" tabindex=1 class="btn btn-link p-0">
                   Ne plus suivre
               </button>
               {% if message %}

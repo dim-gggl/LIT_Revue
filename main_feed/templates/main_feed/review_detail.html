@@ -30,7 +30,7 @@ Détails d'une critique
 <form method="post" aria-label="Ajouter un commentaire">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" aria-label="Publier un commentaire">Envoyer</button>
+    <button type="submit" aria-label="Publier un commentaire" alt="bouton pour poster le commentaire" tabindex=0>Envoyer</button>
 </form>
 </main>
 {% endblock %}

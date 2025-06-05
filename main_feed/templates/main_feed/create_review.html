@@ -12,7 +12,7 @@
       <form method="post" aria-labelledby="review-create-title">
         {% csrf_token %}
         {{ form.as_p }} {# Review form fields #}
-        <button type="submit">Envoyer</button>
+        <button type="submit" tabindex=0 alt="button to validate form">Envoyer</button>
       </form>
     </div>
   </section>
@@ -30,7 +30,7 @@
         <legend>Critique</legend>
         {{ review_form.as_p }} {# Review creation form fields #}
       </fieldset>
-      <button type="submit">Envoyer</button>
+      <button type="submit" tabindex=0 alt="form validation button">Envoyer</button>
     </form>
   {% endif %}
 {% endblock %}

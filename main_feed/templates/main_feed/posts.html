@@ -20,6 +20,6 @@
       {# Message if there are no posts to display #}
       <p class="no-post-to-display-msg" aria-live="polite">Vous n'avez pas encore de posts à afficher</p>
     {% endfor %}
-    <a href="{% url 'homepage' %}" role="button">Retour</a>
+    <a href="{% url 'homepage' %}" alt="lien pour retourner à la page principale" role="button">Retour</a>
   </section>
 {% endblock %}

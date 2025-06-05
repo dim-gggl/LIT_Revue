@@ -3,7 +3,7 @@
         <p class="ticket-time-created">posté le {{ ticket.time_created }}</p>
         <p class="ticket-user">par {{ ticket.user }}</p>
     </div>
-    <h1 class="ticket-title">{{ ticket.title }}</h1>
+    <h2 class="ticket-title">{{ ticket.title }}</h2>
     <div class="ticket-body">
         <p class="ticket-body_description">{{ ticket.description }}</p>
         {% if ticket.image %}
@@ -11,12 +11,12 @@
         {% endif %}
         {% if not ticket.has_review and not review_creation_context %}
             {% with ticket_id=ticket.id %}
-            <a href="{% url 'create_review_from_ticket' ticket_id %}" alt="Lien vers la création d'une critique" class="create-review-btn">Créer une critique</a>
+                <a href="{% url 'create_review_from_ticket' ticket_id %}" tabindex=0 alt="Lien vers la création d'une critique" class="create-review-btn">Créer une critique</a>
             {% endwith %}
         {% endif %}
         {% if update %}
             {% with ticket_id=ticket.id %}
-                <a href="{% url 'update_ticket' ticket.id %}" class="modify-btn" role="button">Modifier</a>
+                <a href="{% url 'update_ticket' ticket.id %}" class="modify-btn" tabindex=1 alt="lien vers la modification d'un billet">Modifier</a>
             {% endwith %}
         {% endif %}
     </div>
